@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naturalismo e Verismo - Studio Comparato</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .section {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .audio-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .audio-item {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+        }
+
+        .audio-item h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .audio-placeholder {
+            background: rgba(255,255,255,0.2);
+            padding: 40px 20px;
+            border-radius: 10px;
+            border: 2px dashed rgba(255,255,255,0.5);
+            margin: 15px 0;
+        }
+
+        .map-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #667eea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .map-locations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.3) 20px, transparent 20px),
+                radial-gradient(circle at 60% 40%, rgba(246, 79, 89, 0.3) 15px, transparent 15px),
+                radial-gradient(circle at 80% 60%, rgba(102, 126, 234, 0.3) 18px, transparent 18px),
+                radial-gradient(circle at 40% 70%, rgba(246, 79, 89, 0.3) 12px, transparent 12px);
+        }
+
+        .text-content {
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .comparison-item {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(252, 182, 159, 0.3);
+        }
+
+        .comparison-item h3 {
+            color: #d63031;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .prefazione-section {
+            margin-bottom: 40px;
+        }
+
+        .prefazione-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .punti-salienti {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .punti-salienti ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .punti-salienti li {
+            background: rgba(255,255,255,0.7);
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Naturalismo e Verismo</h1>
+            <p class="subtitle">Studio comparato dei movimenti letterari dell'Ottocento</p>
+        </header>
+
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection('audio')">Audio</button>
+            <button class="nav-btn" onclick="showSection('mappa')">Mappa</button>
+            <button class="nav-btn" onclick="showSection('analogie')">Analogie</button>
+            <button class="nav-btn" onclick="showSection('differenze')">Differenze</button>
+            <button class="nav-btn" onclick="showSection('prefazioni')">Prefazioni</button>
+        </div>
+
+        <!-- Sezione Audio -->
+        <div id="audio" class="section active">
+            <h2>📻 Contenuti Audio</h2>
+            <p>Ascolta gli approfondimenti sul Naturalismo e Verismo</p>
+            
+            <div class="audio-controls">
+                <div class="audio-item">
+                    <h3>🎵 Il Naturalismo Francese</h3>
+                    <div class="audio-placeholder">
+                        <p>Inserisci qui il tuo primo file audio<br>
+                        <small>(Sostituisci questo placeholder con: &lt;audio controls&gt;&lt;source src="tuo-audio-1.mp3"&gt;&lt;/audio&gt;)</small></p>
+                    </div>
+                </div>
+                
+                <div class="audio-item">
+                    <h3>🎵 Il Verismo Italiano</h3>
+                    <div class="audio-placeholder">
+                        <p>Inserisci qui il tuo secondo file audio<br>
+                        <small>(Sostituisci questo placeholder con: &lt;audio controls&gt;&lt;source src="tuo-audio-2.mp3"&gt;&lt;/audio&gt;)</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sezione Mappa -->
+        <div id="mappa" class="section">
+            <h2>🗺️ Geografia del Naturalismo e Verismo</h2>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-locations"></div>
+                    <div class="map-content">
+                        <h3>Principali Luoghi di Sviluppo</h3>
+                        <p><strong>🔵 NATURALISMO:</strong> Parigi (Zola, Goncourt)<br>
+                        <strong>🔴 VERISMO:</strong> Milano, Catania, Palermo (Verga, Capuana)</p>
+                        <p><small>Sostituisci questo con la tua immagine mappa:<br>
+                        &lt;img src="tua-mappa.jpg" style="max-width: 100%; height: auto;"&gt;</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sezione Analogie -->
+        <div id="analogie" class="section">
+            <h2>🤝 Analogie tra Naturalismo e Verismo</h2>
+            
+            <div class="text-content">
+                <div class="highlight-box">
+                    <h3>Punti di Convergenza</h3>
+                    <p>Naturalismo francese e Verismo italiano condividono fondamenta teoriche e metodologiche che li rendono movimenti fratelli nella letteratura europea dell'Ottocento.</p>
+                </div>
+
+                <p><strong>Metodo Scientifico:</strong> Entrambi i movimenti applicano il metodo scientifico alla letteratura, ispirandosi al positivismo e alle teorie di Auguste Comte. Gli scrittori si propongono di osservare la realtà con l'obiettività di uno scienziato, documentando i fenomeni sociali attraverso la narrativa.</p>
+
+                <p><strong>Determinismo:</strong> Sia naturalisti che veristi credono che il comportamento umano sia determinato da fattori biologici (eredità), sociali (ambiente) e storici (momento). I personaggi sono vittime delle circostanze e non possono sfuggire al loro destino.</p>
+
+                <p><strong>Rappresentazione delle classi popolari:</strong> Entrambi i movimenti spostano l'attenzione letteraria dalle classi aristocratiche e borghesi verso il popolo: operai, contadini, pescatori, minatori. La letteratura diventa strumento di denuncia sociale.</p>
+
+                <p><strong>Linguaggio realistico:</strong> Sia naturalisti che veristi adottano un linguaggio che riflette fedelmente il parlato dei ceti rappresentati, abbandonando lo stile aulico della tradizione letteraria precedente.</p>
+
+                <p><strong>Pessimismo:</strong> Entrambi i movimenti sono caratterizzati da una visione pessimistica dell'esistenza umana, dove prevalgono istinti primitivi, violenza e sopraffazione. La letteratura diventa specchio di una realtà spesso brutale e senza speranza di redenzione.</p>
+            </div>
+        </div>
+
+        <!-- Sezione Differenze -->
+        <div id="differenze" class="section">
+            <h2>⚡ Differenze tra Naturalismo e Verismo</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h3>🇫🇷 Naturalismo Francese</h3>
+                    <p><strong>Contesto urbano:</strong> Si concentra sulla realtà industriale e metropolitana di Parigi, descrivendo la vita operaia, la prostituzione, l'alcolismo.</p>
+                    
+                    <p><strong>Intenti riformatori:</strong> Zola e i naturalisti credono che la letteratura possa contribuire al progresso sociale, denunciando i mali per favorire riforme.</p>
+                    
+                    <p><strong>Sperimentalismo:</strong> Approccio più teorico e sperimentale, con manifesti programmatici come "Il romanzo sperimentale" di Zola.</p>
+                    
+                    <p><strong>Narratore onnisciente:</strong> Presenza più marcata dell'autore che commenta e analizza.</p>
+                </div>
+                
+                <div class="comparison-item">
+                    <h3>🇮🇹 Verismo Italiano</h3>
+                    <p><strong>Contesto rurale:</strong> Si focalizza sul mondo contadino del Sud Italia, in particolare la Sicilia, con le sue tradizioni arcaiche e la povertà.</p>
+                    
+                    <p><strong>Rassegnazione fatalistica:</strong> Non crede nella possibilità di cambiamento sociale; la realtà è immutabile e l'uomo deve accettarla.</p>
+                    
+                    <p><strong>Impersonalità:</strong> Meno teorico, più istintivo. L'arte deve essere impersonale come un documento umano.</p>
+                    
+                    <p><strong>Eclissi dell'autore:</strong> L'autore deve scomparire, lasciando che i fatti si raccontino da soli ("eclissi dell'autore").</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Differenza fondamentale:</strong> Il Naturalismo francese mantiene una fiducia illuministica nel progresso e nella possibilità di miglioramento sociale attraverso la conoscenza. Il Verismo italiano, invece, riflette la condizione di arretratezza del Sud e si caratterizza per un pessimismo più radicale e una visione ciclica della storia.</p>
+            </div>
+        </div>
+
+        <!-- Sezione Prefazioni -->
+        <div id="prefazioni" class="section">
+            <h2>📚 Analisi delle Prefazioni</h2>
+            
+            <div class="prefazione-section">
+                <h3>📖 "Germinie Lacerteux" - Fratelli Goncourt (1864)</h3>
+                
+                <div class="text-content">
+                    <p>La prefazione di "Germinie Lacerteux" dei fratelli Edmond e Jules de Goncourt rappresenta uno dei manifesti teorici del Naturalismo francese, anticipando di diversi anni le teorizzazioni di Émile Zola.</p>
+                </div>
+
+                <div class="punti-salienti">
+                    <h4>🎯 Punti Salienti:</h4>
+                    <ul>
+                        <li><strong>Democrazia letteraria:</strong> "Il pubblico ama i romanzi falsi: questo romanzo è un romanzo vero" - rivendicazione del diritto delle classi popolari di entrare nella letteratura</li>
+                        <li><strong>Metodo clinico:</strong> "Vivendo nel XIX secolo, in un tempo di suffragio universale, di democrazia, di liberalismo, ci siamo domandati se le cosiddette classi inferiori non avessero diritto al Romanzo"</li>
+                        <li><strong>Verità documentaria:</strong> Dichiarano di aver condotto un'inchiesta sulla realtà della servitù domestica, studiando il caso reale della loro domestica</li>
+                        <li><strong>Funzione sociale della letteratura:</strong> La letteratura deve avere "gli studi e i doveri della scienza" e contribuire alla conoscenza della società</li>
+                        <li><strong>Realismo totale:</strong> Rifiuto di ogni idealizzazione: "l'Arte non ha bisogno di essere consolante"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="prefazione-section">
+                <h3>📖 "L'Amante di Gramigna" - Giovanni Verga (1880)</h3>
+                
+                <div class="text-content">
+                    <p>La prefazione-lettera a Salvatore Farina che accompagna "L'Amante di Gramigna" costituisce il manifesto teorico del Verismo italiano e definisce la poetica verghiana dell'impersonalità.</p>
+                </div>
+
+                <div class="punti-salienti">
+                    <h4>🎯 Punti Salienti:</h4>
+                    <ul>
+                        <li><strong>Impersonalità artistica:</strong> "L'opera d'arte sembrerà essersi fatta da sé" - l'autore deve eclissarsi completamente dalla narrazione</li>
+                        <li><strong>Documento umano:</strong> L'arte deve riprodurre la realtà "con la scrupolosità della scienza" creando un "documento umano"</li>
+                        <li><strong>Nascita naturale dell'opera:</strong> "Quando nell'opera d'arte non si scorge più l'uomo che l'ha fatta, allora essa è perfetta"</li>
+                        <li><strong>Semplicità espressiva:</strong> Il fatto deve essere "semplice e senza fronzoli", narrato con la stessa obiettività di un documento</li>
+                        <li><strong>Forma aderente al contenuto:</strong> "La forma sarà così aderente al soggetto che sembrerà averla creata esso stesso"</li>
+                        <li><strong>Rifiuto della retorica:</strong> Critica alla letteratura "di maniera" e agli artifici retorici tradizionali</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🔍 Confronto tra le due Prefazioni</h3>
+                <p><strong>Elemento comune:</strong> Entrambe rivendicano la scientificità della letteratura e il diritto delle classi umili di essere rappresentate.</p>
+                <p><strong>Differenza chiave:</strong> I Goncourt mantengono un intento riformatore e sociale, mentre Verga teorizza una totale neutralità artistica, senza finalità di denuncia o cambiamento sociale.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Nascondi tutte le sezioni
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Rimuovi classe active da tutti i bottoni
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Mostra la sezione selezionata
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Aggiungi classe active al bottone cliccato
+            event.target.classList.add('active');
+        }
+
+        // Animazione di caricamento
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>

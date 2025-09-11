@@ -126,12 +126,16 @@
             font-size: 1.3em;
         }
 
-        .audio-placeholder {
-            background: rgba(255,255,255,0.2);
-            padding: 40px 20px;
-            border-radius: 10px;
-            border: 2px dashed rgba(255,255,255,0.5);
+        .audio-item audio {
+            width: 100%;
             margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .audio-file-info {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 10px;
         }
 
         .map-container {
@@ -155,6 +159,13 @@
         .map-content {
             text-align: center;
             z-index: 2;
+        }
+
+        .map-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .map-locations {
@@ -274,18 +285,24 @@
             <div class="audio-controls">
                 <div class="audio-item">
                     <h3>🎵 Il Naturalismo Francese</h3>
-                    <div class="audio-placeholder">
-                        <p>Inserisci qui il tuo primo file audio<br>
-                        <small>(Sostituisci questo placeholder con: &lt;audio controls&gt;&lt;source src="tuo-audio-1.mp3"&gt;&lt;/audio&gt;)</small></p>
-                    </div>
+                    <audio controls>
+                        <source src="audio/naturalismo-francese.mp3" type="audio/mpeg">
+                        <source src="audio/naturalismo-francese.ogg" type="audio/ogg">
+                        <source src="audio/naturalismo-francese.wav" type="audio/wav">
+                        Il tuo browser non supporta l'elemento audio.
+                    </audio>
+                    <div class="audio-file-info">📁 File: audio/naturalismo-francese.mp3</div>
                 </div>
                 
                 <div class="audio-item">
                     <h3>🎵 Il Verismo Italiano</h3>
-                    <div class="audio-placeholder">
-                        <p>Inserisci qui il tuo secondo file audio<br>
-                        <small>(Sostituisci questo placeholder con: &lt;audio controls&gt;&lt;source src="tuo-audio-2.mp3"&gt;&lt;/audio&gt;)</small></p>
-                    </div>
+                    <audio controls>
+                        <source src="audio/verismo-italiano.mp3" type="audio/mpeg">
+                        <source src="audio/verismo-italiano.ogg" type="audio/ogg">
+                        <source src="audio/verismo-italiano.wav" type="audio/wav">
+                        Il tuo browser non supporta l'elemento audio.
+                    </audio>
+                    <div class="audio-file-info">📁 File: audio/verismo-italiano.mp3</div>
                 </div>
             </div>
         </div>
@@ -299,10 +316,15 @@
                     <div class="map-locations"></div>
                     <div class="map-content">
                         <h3>Principali Luoghi di Sviluppo</h3>
-                        <img src="images/mappa-naturalismo-verismo.jpg" alt="Mappa geografica del Naturalismo e Verismo" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                        <p style="margin-top: 15px;"><strong>🔵 NATURALISMO:</strong> Parigi (Zola, Goncourt)<br>
-                        <strong>🔴 VERISMO:</strong> Milano, Catania, Palermo (Verga, Capuana)</p>
-                        <p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">📁 File: images/mappa-naturalismo-verismo.jpg</p>
+                        <img src="images/mappa-naturalismo-verismo.jpg" alt="Mappa geografica del Naturalismo e Verismo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display: none;">
+                            <p><strong>🔵 NATURALISMO:</strong> Parigi (Zola, Goncourt)<br>
+                            <strong>🔴 VERISMO:</strong> Milano, Catania, Palermo (Verga, Capuana)</p>
+                            <p style="font-size: 0.9em; opacity: 0.7; margin-top: 15px;">
+                                Mappa non trovata. Carica il file: images/mappa-naturalismo-verismo.jpg
+                            </p>
+                        </div>
+                        <div class="audio-file-info" style="margin-top: 15px;">📁 File: images/mappa-naturalismo-verismo.jpg</div>
                     </div>
                 </div>
             </div>

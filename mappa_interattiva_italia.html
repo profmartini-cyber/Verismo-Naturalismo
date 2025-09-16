@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6a4b6a477f8bb35523babf49b1f3f51c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6a4b6a477f8bb35523babf49b1f3f51c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6a4b6a477f8bb35523babf49b1f3f51c = L.map(
+                "map_6a4b6a477f8bb35523babf49b1f3f51c",
+                {
+                    center: [42.0, 12.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_93fc5691390cc463f660077198b19e39 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_6a4b6a477f8bb35523babf49b1f3f51c);
+        
+    
+            var marker_333f4ad8a68271b9344c0ec13a86803c = L.marker(
+                [45.46, 9.19],
+                {}
+            ).addTo(map_6a4b6a477f8bb35523babf49b1f3f51c);
+        
+    
+            var icon_469a384813f604a778d37806e9751bc6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_333f4ad8a68271b9344c0ec13a86803c.setIcon(icon_469a384813f604a778d37806e9751bc6);
+        
+    
+        var popup_76d202883f3498a4b8ffc692b56dc2a2 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a3fa0a2095037c2a2f6d74e658ec5ffd = $(`<div id="html_a3fa0a2095037c2a2f6d74e658ec5ffd" style="width: 100.0%; height: 100.0%;"><b>Milano</b><br><textarea rows='3' cols='25' placeholder='Scrivi qui le tue note'></textarea></div>`)[0];
+            popup_76d202883f3498a4b8ffc692b56dc2a2.setContent(html_a3fa0a2095037c2a2f6d74e658ec5ffd);
+        
+
+        marker_333f4ad8a68271b9344c0ec13a86803c.bindPopup(popup_76d202883f3498a4b8ffc692b56dc2a2)
+        ;
+
+        
+    
+    
+            marker_333f4ad8a68271b9344c0ec13a86803c.bindTooltip(
+                `<div>
+                     Milano
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4e2f6684a49a89e2ee7d12ea79f44948 = L.marker(
+                [40.85, 14.27],
+                {}
+            ).addTo(map_6a4b6a477f8bb35523babf49b1f3f51c);
+        
+    
+            var icon_588d8f49b1651aa660620d47b9bc087b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_4e2f6684a49a89e2ee7d12ea79f44948.setIcon(icon_588d8f49b1651aa660620d47b9bc087b);
+        
+    
+        var popup_39fc95435c1377183bdcc513fae16bb5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a6f236521cecff9f6f7978f12575a436 = $(`<div id="html_a6f236521cecff9f6f7978f12575a436" style="width: 100.0%; height: 100.0%;"><b>Napoli</b><br><textarea rows='3' cols='25' placeholder='Scrivi qui le tue note'></textarea></div>`)[0];
+            popup_39fc95435c1377183bdcc513fae16bb5.setContent(html_a6f236521cecff9f6f7978f12575a436);
+        
+
+        marker_4e2f6684a49a89e2ee7d12ea79f44948.bindPopup(popup_39fc95435c1377183bdcc513fae16bb5)
+        ;
+
+        
+    
+    
+            marker_4e2f6684a49a89e2ee7d12ea79f44948.bindTooltip(
+                `<div>
+                     Napoli
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7de63d8910db8cd8f34ea18e3f370c4d = L.marker(
+                [37.51, 15.08],
+                {}
+            ).addTo(map_6a4b6a477f8bb35523babf49b1f3f51c);
+        
+    
+            var icon_051aadcf18d7051172589f8656a57295 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7de63d8910db8cd8f34ea18e3f370c4d.setIcon(icon_051aadcf18d7051172589f8656a57295);
+        
+    
+        var popup_669d7d0db8ddd78de1be6b2e11b236af = L.popup({"maxWidth": "100%"});
+
+        
+            var html_6b095ee29333085a2aef6711a5665dbd = $(`<div id="html_6b095ee29333085a2aef6711a5665dbd" style="width: 100.0%; height: 100.0%;"><b>Catania</b><br><textarea rows='3' cols='25' placeholder='Scrivi qui le tue note'></textarea></div>`)[0];
+            popup_669d7d0db8ddd78de1be6b2e11b236af.setContent(html_6b095ee29333085a2aef6711a5665dbd);
+        
+
+        marker_7de63d8910db8cd8f34ea18e3f370c4d.bindPopup(popup_669d7d0db8ddd78de1be6b2e11b236af)
+        ;
+
+        
+    
+    
+            marker_7de63d8910db8cd8f34ea18e3f370c4d.bindTooltip(
+                `<div>
+                     Catania
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3ff1e567820bd24f3369052c19dfe201 = L.marker(
+                [40.32, 9.33],
+                {}
+            ).addTo(map_6a4b6a477f8bb35523babf49b1f3f51c);
+        
+    
+            var icon_2a875142073916f2b80d15fe7220f838 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3ff1e567820bd24f3369052c19dfe201.setIcon(icon_2a875142073916f2b80d15fe7220f838);
+        
+    
+        var popup_b36cd79d94e9e2391b807eb10d806496 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5f48d26923eedfb8dc43a9f152cceacf = $(`<div id="html_5f48d26923eedfb8dc43a9f152cceacf" style="width: 100.0%; height: 100.0%;"><b>Nuoro</b><br><textarea rows='3' cols='25' placeholder='Scrivi qui le tue note'></textarea></div>`)[0];
+            popup_b36cd79d94e9e2391b807eb10d806496.setContent(html_5f48d26923eedfb8dc43a9f152cceacf);
+        
+
+        marker_3ff1e567820bd24f3369052c19dfe201.bindPopup(popup_b36cd79d94e9e2391b807eb10d806496)
+        ;
+
+        
+    
+    
+            marker_3ff1e567820bd24f3369052c19dfe201.bindTooltip(
+                `<div>
+                     Nuoro
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
